@@ -66,3 +66,167 @@
             margin-top: 5px;
         }
         
+        /* SIDEBAR LINKS */
+
+        .sidebar a {
+            width:50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color:white;
+            font-size: 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .sidebar a:hover {
+            width:50px;
+            height:50px;
+            display:flex;
+            align-items:center;
+            justify-content: center;
+            color:white;
+            font-size:25px;
+            border-radius: 12px;
+            text-decoration:none;
+            flex-shrink:0;
+        }
+
+        .sidebar a:hover {
+            background:rgba (255,255,255,0.2);
+        }
+
+        /* MAIN CONTAINER */
+
+        .container {
+            max-width:1100px;
+            margin:auto;
+            margin-left:100px;
+        }
+
+        /* TOP HEADER */
+
+        .header{
+            background: linear-gradient(135deg, #4f46ef, #7c3aed);
+            color:white;
+            padding:35px;
+            border-radius: 20px;
+            margin-bottom:25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2px;
+            margin-bottom:10px;
+        }
+
+        .header p{
+            font-size:17px;
+        }
+
+        /* PROGRESS BOX */
+
+        .progress-box {
+            background:white;
+            padding:25px;
+            border-radius:18px;
+            box-shadow: 0 15px rgba(0,0,0,0.7);
+        }
+
+        .progress-box h2{
+            margin-bottom:15px;
+        }
+
+        .progress-box p {
+            font-size:17px;
+            margin-bottom:20px;
+        }
+
+        /* PROGRESS BAR */
+
+        .progress-bar {
+            width:100%;
+            height:20px;
+            background: #e5e7eb;
+            border-radius:10px;
+            overflow:hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height:100%;
+            background: #4f46e5;
+            border-radius: 10px;
+        }
+
+        /* PHONE */
+
+        @media (max-width:80px) {
+            body{
+                padding:15px;
+            }
+            .container {
+                margin-left:85px;
+            }
+        }
+        </style>
+        </head>
+        <body>
+
+            <!--SIDEBAR-->
+
+            <div class="sidebar">
+
+                <!--PROFILE / LOGIN-->
+
+                <div class="profile-section">
+                    <a href="login.html" class="profile-link" title="Login">
+                        <div class="profile-pic">👤</div>
+                    </a>
+                    <span class="profile-text">Login</span>
+                    </div>
+
+                    <!--MAIN ICONS-->
+
+                    <div class="nav-icons">
+                        <a href="index.html" title="Home">🏠</a>
+                        <a href="tasks.html" title="Tasks">✅</a>
+                        <a href="studytime.html" title="Timer">⏱️</a>
+                        <a href="schedule.html" titl="Schedule">📅</a>
+                        <a href="progress.html" title="Progress">📊</a>
+                    </div>
+
+                    <!--SETTINGS-->
+
+                    <div class="bottom-icons">
+                        <a href="settings.html" title="Settings">⚙️</a>
+                    </div>
+
+                    </div>
+
+                    <!--MAIN PAGE-->
+
+                    <div class="container">
+
+                        <div class="header">
+                            <h1>Progress</h1>
+                            <p>Track your study progress</p>
+                        </div>
+                        
+                        <div class=" progress-box">
+                            <h2>Your Progress</h2>
+                            <p>Keep working on your goals and track your progress here</p>
+                        </div>
+                        
+                        <div class="progress=box">
+                            <h2>Your Progress</h2>
+                            <p>Keep working on your goals and track your progress here.</p>
+
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                        </div>
+                        </div>
+                        </div>
+                        </body> </html>
