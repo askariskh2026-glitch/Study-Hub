@@ -1,48 +1,59 @@
- <!DOCTYPE html>
- <html lang="en">
-    <head> <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0"> <title> Progress-StudyHub </title>
-    
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress-StudyHub</title>
+
     <style>
-        *{
-            box-sizing:border-box;
-            margin:0;
-            padding:0;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
         }
 
-        body{
-            background:#f4f7fb;
+        body {
+            background: #f4f7fb;
             color: #222;
             padding: 30px;
         }
 
-        /*--SIDEBAR--*/
 
-        .sidebar { 
-            position: fixed; 
-            left: 0; 
-            top: 0; 
-            width: 75px; 
+        /* SIDEBAR */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 75px;
             height: 100vh;
-            background: #4f46e5; 
-            display: flex; 
-            flex-direction: column; 
+            background: #4f46e5;
+
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            padding-top: 20px; 
-            box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1); 
-            z-index: 1000; 
-            overflow-y: auto; 
+
+            padding-top: 20px;
+
+            box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);
+
+            z-index: 1000;
+
+            overflow-y: auto;
             overflow-x: hidden;
         }
 
-        /* PROFILE */
+
+        /* PROFILE / LOGIN */
 
         .profile-section {
-            display:flex;
+            display: flex;
             flex-direction: column;
-            align-items:center;
-            flex-shrink:0;
+            align-items: center;
+            flex-shrink: 0;
         }
 
         .profile-link {
@@ -50,183 +61,373 @@
         }
 
         .profile-pic {
-            width:48px;
-            height:48px;
+            width: 48px;
+            height: 48px;
+
             border-radius: 50%;
-            background:white;
-            display:flex;
-            align-items:center;
-            justify-items: center;
-            font-size:25px;
-        }
+            background: white;
 
-        .profile-text {
-            color:white;
-            font-size: 11px;
-            margin-top: 5px;
-        }
-        
-        /* SIDEBAR LINKS */
-
-        .sidebar a {
-            width:50px;
-            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color:white;
+
             font-size: 25px;
+        }
+
+        .profile-text {
+            color: white;
+            font-size: 11px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+
+        /* MAIN SIDEBAR ICONS */
+
+        .nav-icons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            gap: 15px;
+
+            margin-top: 55px;
+        }
+
+
+        /* SETTINGS AT EXTREME BOTTOM */
+
+        .bottom-icons {
+            margin-top: auto;
+            padding-bottom: 15px;
+        }
+
+
+        /* SIDEBAR LINKS */
+
+        .sidebar a {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            font-size: 25px;
+
             border-radius: 12px;
             text-decoration: none;
+
             flex-shrink: 0;
         }
 
         .sidebar a:hover {
-            width:50px;
-            height:50px;
-            display:flex;
-            align-items:center;
-            justify-content: center;
-            color:white;
-            font-size:25px;
-            border-radius: 12px;
-            text-decoration:none;
-            flex-shrink:0;
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .sidebar a:hover {
-            background:rgba (255,255,255,0.2);
-        }
 
         /* MAIN CONTAINER */
 
         .container {
-            max-width:1100px;
-            margin:auto;
-            margin-left:100px;
+            max-width: 1100px;
+            margin: auto;
+            margin-left: 100px;
         }
 
-        /* TOP HEADER */
 
-        .header{
-            background: linear-gradient(135deg, #4f46ef, #7c3aed);
-            color:white;
-            padding:35px;
+        /* TOP BLUE HEADER */
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+
+            color: white;
+
+            padding: 35px;
+
             border-radius: 20px;
-            margin-bottom:25px;
+
+            margin-bottom: 25px;
+
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         .header h1 {
-            font-size: 2px;
-            margin-bottom:10px;
+            font-size: 30px;
+            margin-bottom: 10px;
         }
 
-        .header p{
-            font-size:17px;
+        .header p {
+            font-size: 17px;
         }
 
-        /* PROGRESS BOX */
 
-        .progress-box {
-            background:white;
-            padding:25px;
-            border-radius:18px;
-            box-shadow: 0 15px rgba(0,0,0,0.7);
+        /* GRAPH BOX */
+
+        .graph-box {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+            height: 500px;
         }
 
-        .progress-box h2{
-            margin-bottom:15px;
+        #progressChart {
+            width: 100%;
+            height: 100%;
         }
 
-        .progress-box p {
-            font-size:17px;
-            margin-bottom:20px;
-        }
-
-        /* PROGRESS BAR */
-
-        .progress-bar {
-            width:100%;
-            height:20px;
-            background: #e5e7eb;
-            border-radius:10px;
-            overflow:hidden;
-        }
-
-        .progress-fill {
-            width: 0%;
-            height:100%;
-            background: #4f46e5;
-            border-radius: 10px;
-        }
 
         /* PHONE */
 
-        @media (max-width:80px) {
-            body{
-                padding:15px;
+        @media (max-width: 700px) {
+
+            body {
+                padding: 15px;
             }
+
             .container {
-                margin-left:85px;
+                margin-left: 85px;
+            }
+
+            .graph-box {
+                height: 400px;
             }
         }
-        </style>
-        </head>
-        <body>
 
-            <!--SIDEBAR-->
+    </style>
 
-            <div class="sidebar">
+</head>
 
-                <!--PROFILE / LOGIN-->
 
-                <div class="profile-section">
-                    <a href="login.html" class="profile-link" title="Login">
-                        <div class="profile-pic">👤</div>
-                    </a>
-                    <span class="profile-text">Login</span>
-                    </div>
+<body>
 
-                    <!--MAIN ICONS-->
 
-                    <div class="nav-icons">
-                        <a href="index.html" title="Home">🏠</a>
-                        <a href="tasks.html" title="Tasks">✅</a>
-                        <a href="studytime.html" title="Timer">⏱️</a>
-                        <a href="schedule.html" titl="Schedule">📅</a>
-                        <a href="progress.html" title="Progress">📊</a>
-                    </div>
+    <!-- SIDEBAR -->
 
-                    <!--SETTINGS-->
+    <div class="sidebar">
 
-                    <div class="bottom-icons">
-                        <a href="settings.html" title="Settings">⚙️</a>
-                    </div>
 
-                    </div>
+        <!-- PROFILE / LOGIN -->
 
-                    <!--MAIN PAGE-->
+        <div class="profile-section">
 
-                    <div class="container">
+            <a href="login.html" class="profile-link" title="Login">
 
-                        <div class="header">
-                            <h1>Progress</h1>
-                            <p>Track your study progress</p>
-                        </div>
-                        
-                        <div class=" progress-box">
-                            <h2>Your Progress</h2>
-                            <p>Keep working on your goals and track your progress here</p>
-                        </div>
-                        
-                        <div class="progress=box">
-                            <h2>Your Progress</h2>
-                            <p>Keep working on your goals and track your progress here.</p>
+                <div class="profile-pic">
+                    👤
+                </div>
 
-                            <div class="progress-bar">
-                                <div class="progress-fill"></div>
-                        </div>
-                        </div>
-                        </div>
-                        </body> </html>
+            </a>
+
+            <span class="profile-text">
+                Login
+            </span>
+
+        </div>
+
+
+        <!-- MAIN ICONS -->
+
+        <div class="nav-icons">
+
+            <a href="index.html" title="Home">
+                🏠
+            </a>
+
+            <a href="tasks.html" title="Tasks">
+                ✅
+            </a>
+
+            <a href="studytime.html" title="Timer">
+                ⏱️
+            </a>
+
+            <a href="schedule.html" title="Schedule">
+                📅
+            </a>
+
+            <a href="progress.html" title="Progress">
+                📊
+            </a>
+
+        </div>
+
+
+        <!-- SETTINGS -->
+
+        <div class="bottom-icons">
+
+            <a href="settings.html" title="Settings">
+                ⚙️
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MAIN PAGE -->
+
+    <div class="container">
+
+
+        <!-- BLUE HEADER -->
+
+        <div class="header">
+
+            <h1>
+                Your Progress
+            </h1>
+
+            <p>
+                Track your study progress and keep working toward your goals.
+            </p>
+
+        </div>
+
+
+
+        <!-- GRAPH -->
+
+        <div class="graph-box">
+
+            <canvas id="progressChart"></canvas>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- CHART.JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+
+        const ctx = document.getElementById('progressChart');
+
+        new Chart(ctx, {
+
+            type: 'bar',
+
+            data: {
+
+                labels: [
+                    'Week 1',
+                    'Week 2',
+                    'Week 3',
+                    'Week 4'
+                ],
+
+                datasets: [
+
+                    {
+                        label: 'Maths',
+
+                        data: [
+                            4.3,
+                            2.5,
+                            3.5,
+                            4.5
+                        ]
+                    },
+
+
+                    {
+                        label: 'English',
+
+                        data: [
+                            2.4,
+                            4.4,
+                            1.9,
+                            2.9
+                        ]
+                    },
+
+
+                    {
+                        label: 'Science',
+
+                        data: [
+                            2.0,
+                            2.1,
+                            3.0,
+                            5.0
+                        ]
+                    }
+
+                ]
+
+            },
+
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+
+                plugins: {
+
+                    title: {
+
+                        display: true,
+
+                        text: 'Progress',
+
+                        font: {
+                            size: 24
+                        }
+
+                    },
+
+
+                    legend: {
+
+                        display: true,
+
+                        position: 'bottom'
+
+                    }
+
+                },
+
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        max: 6,
+
+                        ticks: {
+
+                            stepSize: 1
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
