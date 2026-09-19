@@ -1,2 +1,543 @@
-# Study-Hub
- A student website
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Study Hub</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 17px;
+        }
+
+        /* SECTION TITLE */
+
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        /* OVERVIEW */
+
+        .overview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .overview-card {
+            background: white;
+            padding: 22px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        .overview-card h3 {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .overview-card p {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+
+        /* MAIN CONTENT */
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        /* TASKS */
+
+        .tasks {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        .tasks h2 {
+            margin-bottom: 15px;
+        }
+
+        .task {
+            padding: 15px 5px;
+            border-bottom: 1px solid #eeeeee;
+            font-size: 16px;
+        }
+
+        .task:last-child {
+            border-bottom: none;
+        }
+
+        /* TIMER */
+
+        .timer {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        .timer h2 {
+            margin-bottom: 10px;
+        }
+
+        .timer p {
+            color: #666;
+        }
+
+        .timer-display {
+            font-size: 42px;
+            font-weight: bold;
+            color: #4f46e5;
+            margin: 25px 0;
+        }
+
+        .start-button {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .start-button:hover {
+            background: #3730a3;
+        }
+
+        /* SUBJECTS */
+
+        .subjects {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        .subjects h2 {
+            margin-bottom: 20px;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .subject {
+            background: #f4f7fb;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .subject:hover {
+            background: #e9e7ff;
+            transform: translateY(-2px);
+        }
+        
+        /*SIDEBAR */
+        .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 75px;
+    height: 100vh;
+    background: #4f46e5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    }
+
+    /* PROFILE / LOGIN */
+    .profile-section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+    }
+    .profile-link {
+        text-decoration: none;
+    }
+    .profile-pic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+    }
+
+    /* ALL SIDEBAR LINKS */
+    .sidebar a {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 25px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+    flex-shrink: 0;
+    }
+    
+    .sidebar a:hover {
+        background: rgba(255,255,255,0.2);
+    }
+
+    
+
+     .profile-text{
+        color: white;
+        font-size: 11px;
+        margin-top: 5px;
+        
+     }
+
+     .nav-icons {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 100px;
+     }
+    
+     /* SETTINGS AT EXTREME BOTTOM */
+        .bottom-icons{
+            margin-top: auto;
+            padding-top: 20px;
+            flex-shrink: 0;
+        }
+
+    .container {
+        margin-left:100px;
+    }
+    
+    /* PHONE */
+
+        @media (max-width: 800px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+    <!--SIDEBAR-->
+    <div class="sidebar">
+
+        <!--PROFILE / LOGIN -->
+        <div class="profile-section">
+            <a href="login.html" class="profile-link" title="login">
+                <div class="profile-pic">👤</div>
+            </a>
+            <span class="profile-text">Login</span>
+        </div> 
+        
+        <!--MAIN ICONS-->
+        
+        <div class="nav-icons">
+        <a href="index.html" title="Home">🏠</a>
+        <a href="tasks.html" title="Tasks">✅</a>
+        <a href="studytime.html" title="Timer">⏱️</a>
+        <a href="schedule.html" title="schedule">📅</a>
+        <a href="progress.html" title="Progress">📊</a>
+        </div>
+
+        <!--SETTINGS-->
+        <div class="bottom-icons">
+            <a href="settings.html" title="Settings">⚙️</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- WELCOME -->
+
+        <div class="header">
+
+            <h1>Welcome Back! 👋</h1>
+
+            <p>Ready to continue your learning?</p>
+
+        </div>
+
+
+        <!-- TODAY'S OVERVIEW -->
+
+        <h2 class="section-title">
+            Today's Overview
+        </h2>
+
+
+        <div class="overview">
+
+            
+            <div class="overview-card">
+                <h3>Study Time</h3>
+                <p>2 Hours</p>
+            </div>
+            
+            
+            
+            <div class="overview-card">
+                <h3>Tasks Completed</h3>
+                <p>6/8</p>
+            </div>
+            
+            
+             
+            <div class="overview-card">
+                <h3>Subjects</h3>
+                <p>3</p>
+            </div>
+            
+
+            <div class="overview-card">
+                <h3>Study Streak</h3>
+                <p>7 Days 🔥</p>
+            </div>
+            
+                  
+        </div>
+
+
+        <!-- TASKS + TIMER -->
+
+        <div class="main-content">
+
+
+            <!-- TASKS -->
+            
+            <div class="tasks">
+
+                <h2>Today's Tasks</h2>
+
+
+                <div class="task">
+                   <input type="checkbox" onchange="hideTask(this)"> 
+                    Complete Math's Homework
+                </div>
+
+
+                <div class="task">
+                    <input type="checkbox" onchange="hideTask(this)">
+                    Complete Science Quiz
+                </div>
+
+
+                <div class="task">
+                    <input type="checkbox" onchange="hideTask(this)">
+                     Review English Notes
+                </div>
+
+            </div>
+
+
+            <!-- TIMER -->
+
+            <div class="timer">
+
+                <h2>Timer</h2>
+
+                <p>Ready to Focus: 25 Min?</p>
+
+                <div class="timer-display" id="timer">
+                    25:00
+                </div>
+
+                <button class="start-button" id="startButton" onclick="toggleTimer()">
+                    Start
+                </button>
+                <button class="start-button" onclick="restartTimer()">
+                         Restart
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SUBJECTS -->
+         
+    
+        <div class="subjects">
+
+            <h2>Your Subjects: 3</h2>
+
+
+            <div class="subjects-grid">
+
+
+                <div class="subject">
+                    📐 Mathematics
+                </div>
+
+
+                <div class="subject">
+                    🔬 Science
+                </div>
+
+
+                <div class="subject">
+                    📖 English
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <html
+<script>
+    html
+<script>
+let timeLeft = 25 * 60;
+let timer = null;
+
+function toggleTimer() {
+
+    if (timer !== null) {
+        clearInterval(timer);
+        timer = null;
+
+        document.getElementById("startButton").textContent = "▶ Start";
+        return;
+    }
+
+    document.getElementById("startButton").textContent = "⏸ Pause";
+
+    timer = setInterval(function() {
+
+        timeLeft--;
+
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+
+        document.getElementById("timer").textContent =
+            String(minutes).padStart(2, "0") + ":" +
+            String(seconds).padStart(2, "0");
+
+        if (timeLeft <= 0) {
+
+            clearInterval(timer);
+            timer = null;
+
+            document.getElementById("timer").textContent = "00:00";
+            document.getElementById("startButton").textContent = "▶ Start";
+
+            alert("Time's up! 🎉");
+        }
+
+
+    }, 1000);
+}
+function restartTimer() {
+
+    clearInterval(timer);
+    timer = null;
+
+    timeLeft = 25 * 60;
+
+    document.getElementById("timer").textContent = "25:00";
+    document.getElementById("startButton").textContent = "▶ Start";
+}
+function hideTask(checkbox) {
+    if(checkbox.checked) {
+        checkbox.parentElement.style.display ="none" ;
+    }
+
+}
+</script>
+
+</body>
+
+</html> 
