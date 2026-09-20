@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lan="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            StudyTime-StudyHub
+        </title>
+
+        <style>
+            *{
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
+
+            body {
+                background: #f4f7fb;
+                color: #222;
+            }
+
+            /* SIDEBAR */
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top:0;
+                width: 85px;
+                height:100vh;
+                background: linear-gradient(135deg, #4f46e5, #7c3aed);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                z-index: 1000px;
+            }
+
+            .login a {
+                text-decoration: none;
+                color: #4f46e5;
+                font-size: 25px;
+                background: white;
+                width: 50px;
+                height:50px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                border-radius: 50%;
+            }
+ 
+            .nav {
+                display:flex;
+                flex-direction: column;
+                gap: 25px;
+                margin-top: 35px;
+            }
+
+            .nav a,
+            .settings a {
+                text-decoration: none;
+                color: white;
+                font-size: 27px;
+                display: flex;
+                align-items: center;
+                width: 55px;
+                height:55px;
+                border-radius: 12px;
+            }
+
+            .nav a:hover,
+            .settings a:hover {
+              background: rgba(255,255,255,0.2);
+            }
+
+            .settings {
+                margin-top: auto;
+            }
+
+            /* MAIN */
+            .main {
+                margin-left: 85px;
+                padding: 30px;
+            }
+
+            .header {
+                background: linear-gradient(135deg, #4f46e5,#7c3aed);
+                color:white;
+                padding: 35px;
+                border-radius: 30px;
+                text-align: center;
+                margin-bottom: 25px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+                margin-bottom: 8px;
+            }
+
+            .header p {
+                font-size: 16px;
+            }
+            
+             /* TIMER */
+    .timer-card {
+        background: white;
+        border-radius: 20px;
+        padding: 35px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        margin-bottom: 25px;
+    }
+
+    .timer-card h2 {
+        margin-bottom: 20px;
+    }
+
+    #timer {
+        font-size: 65px;
+        font-weight: bold;
+        color: #4f46e5;
+        margin: 20px 0;
+    }
+
+    .timer-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .timer-buttons button {
+        border: none;
+        padding: 12px 25px;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        color: white;
+        background: #4f46e5;
+    }
+
+    .timer-buttons button:hover {
+        background: #7c3aed;
+    }
+
+    .timer-info {
+        margin-top: 15px;
+        color: #666;
+        font-size: 14px;
+    }
+
+    /* 4 WEEKS */
+    .weeks {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .weeks h2 {
+        margin-bottom: 20px;
+    }
+
+    .week-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+
+    .week {
+        background: #f4f7fb;
+        padding: 25px 15px;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    .week h3 {
+        color: #4f46e5;
+        margin-bottom: 10px;
+    }
+
+    .week p {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    @media (max-width: 800px) {
+        .week-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+    <div class="login">
+        <a href="login.html" title="Login">👤</a>
+    </div>
+
+    <div class="nav">
+        <a href="index.html" title="Home">🏠</a>
+        <a href="tasks.html" title="Tasks">📝</a>
+        <a href="studytime.html" title="Timer">⏱️</a>
+        <a href="schedule.html" title="Schedule">📅</a>
+        <a href="progress.html" title="Progress">📊</a>
+    </div>
+
+    <div class="settings">
+        <a href="settings.html" title="Settings">⚙️</a>
+    </div>
+
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+    <div class="header">
+        <h1>Study Time</h1>
+        <p>Focus on your studies and track your study time</p>
+    </div>
+
+    <!-- TIMER -->
+    <div class="timer-card">
+
+        <h2>Study Timer</h2>
+
+        <div id="timer">25:00</div>
+
+        <div class="timer-buttons">
+            <button onclick="startTimer()">Start</button>
+            <button onclick="pauseTimer()">Pause</button>
+            <button onclick="resetTimer()">Restart</button>
+        </div>
+
+        <p class="timer-info">
+            Maximum study session: 25 minutes
+        </p>
+
+    </div>
+
+    <!-- FOUR WEEKS -->
+    <div class="weeks">
+
+        <h2>Study Time - Last 4 Weeks</h2>
+
+        <div class="week-grid">
+
+            <div class="week">
+                <h3>Week 1</h3>
+                <p id="week1">0 min</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 2</h3>
+                <p id="week2">0 min</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 3</h3>
+                <p id="week3">0 min</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 4</h3>
+                <p id="week4">0 min</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    let timeLeft = 25 * 60;
+    let timerInterval = null;
+    let studySeconds = 0;
+
+    function updateTimer() {
+
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+
+        document.getElementById("timer").textContent =
+            String(minutes).padStart(2, "0") + ":" +
+            String(seconds).padStart(2, "0");
+    }
+
+    function startTimer() {
+
+        if (timerInterval !== null) {
+            return;
+        }
+
+        timerInterval = setInterval(function() {
+
+            if (timeLeft > 0) {
+
+                timeLeft--;
+                studySeconds++;
+
+                updateTimer();
+
+            } else {
+
+                clearInterval(timerInterval);
+                timerInterval = null;
+
+                saveStudyTime();
+
+                alert("25-minute study session completed!");
+
+            }
+
+        }, 1000);
+    }
+
+    function pauseTimer() {
+
+        clearInterval(timerInterval);
+        timerInterval = null;
+
+    }
+
+    function resetTimer() {
+
+        clearInterval(timerInterval);
+        timerInterval = null;
+
+        timeLeft = 25 * 60;
+        studySeconds = 0;
+
+        updateTimer();
+
+    }
+
+    function saveStudyTime() {
+
+        let completedMinutes = Math.floor(studySeconds / 60);
+
+        if (completedMinutes <= 0) {
+            return;
+        }
+
+        let weeks = JSON.parse(localStorage.getItem("studyWeeks")) || {
+            week1: 0,
+            week2: 0,
+            week3: 0,
+            week4: 0
+        };
+
+        weeks.week4 += completedMinutes;
+
+        localStorage.setItem("studyWeeks", JSON.stringify(weeks));
+
+        displayWeeks();
+    }
+
+    function displayWeeks() {
+
+        let weeks = JSON.parse(localStorage.getItem("studyWeeks")) || {
+            week1: 0,
+            week2: 0,
+            week3: 0,
+            week4: 0
+        };
+
+        document.getElementById("week1").textContent =
+            weeks.week1 + " min";
+
+        document.getElementById("week2").textContent =
+            weeks.week2 + " min";
+
+        document.getElementById("week3").textContent =
+            weeks.week3 + " min";
+
+        document.getElementById("week4").textContent =
+            weeks.week4 + " min";
+    }
+
+    updateTimer();
+    displayWeeks();
+
+</script>
+
+</body> </html>
+
