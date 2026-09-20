@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +43,7 @@
             text-decoration: none;
             color: #4f46e5;
             font-size: 25px;
-            background:white;
+            background: white;
             width: 50px;
             height: 50px;
             display: flex;
@@ -126,6 +125,168 @@
         .header p {
             font-size: 16px;
         }
+
+        /* ADD SESSION BOX */
+        .add-session {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+        }
+
+        .add-session h2 {
+            color: #4f46e5;
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr auto;
+            gap: 12px;
+            align-items: end;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #4f46e5;
+        }
+
+        .add-button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .add-button:hover {
+            opacity: 0.9;
+        }
+
+        /* SCHEDULE BOX */
+        .schedule-box {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .schedule-box h2 {
+            color: #4f46e5;
+            margin-bottom: 20px;
+        }
+
+        /* EACH SESSION */
+        .session {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .session-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .session-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: #eef2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .session h3 {
+            margin-bottom: 5px;
+        }
+
+        .session p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* DELETE BUTTON */
+        .delete-button {
+            border: none;
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background: #fecaca;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #888;
+            padding: 30px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .add-button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .sidebar {
+                width: 65px;
+            }
+
+            .nav a,
+            .settings a {
+                width: 45px;
+                height: 45px;
+                font-size: 21px;
+            }
+
+            .login a {
+                width: 45px;
+                height: 45px;
+            }
+
+            .main {
+                margin-left: 65px;
+                padding: 15px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -171,11 +332,286 @@
             <p>Plan your study time and stay organized</p>
         </div>
 
-        <!-- Your Schedule content will go here -->
+
+        <!-- ADD STUDY SESSION -->
+        <div class="add-session">
+
+            <h2>➕ Add Study Session</h2>
+
+            <form onsubmit="addSession(event)">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input
+                            type="text"
+                            id="subject"
+                            placeholder="e.g. Mathematics"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input
+                            type="date"
+                            id="date"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="startTime">Start Time</label>
+                        <input
+                            type="time"
+                            id="startTime"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endTime">End Time</label>
+                        <input
+                            type="time"
+                            id="endTime"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="add-button">
+                        Add
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- MY SCHEDULE -->
+        <div class="schedule-box">
+
+            <h2>📅 My Schedule</h2>
+
+            <div id="scheduleList">
+
+                <p class="empty-message">
+                    No study sessions added yet.
+                </p>
+
+            </div>
+
+        </div>
 
     </div>
+
+
+    <script>
+
+        let sessions =
+            JSON.parse(localStorage.getItem("studySessions")) || [];
+
+
+        function addSession(event) {
+
+            event.preventDefault();
+
+            const subject =
+                document.getElementById("subject").value.trim();
+
+            const date =
+                document.getElementById("date").value;
+
+            const startTime =
+                document.getElementById("startTime").value;
+
+            const endTime =
+                document.getElementById("endTime").value;
+
+
+            if (
+                subject === "" ||
+                date === "" ||
+                startTime === "" ||
+                endTime === ""
+            ) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+
+            if (endTime <= startTime) {
+                alert("End time must be after start time.");
+                return;
+            }
+
+
+            const session = {
+                id: Date.now(),
+                subject: subject,
+                date: date,
+                startTime: startTime,
+                endTime: endTime
+            };
+
+
+            sessions.push(session);
+
+
+            localStorage.setItem(
+                "studySessions",
+                JSON.stringify(sessions)
+            );
+
+
+            document.getElementById("subject").value = "";
+            document.getElementById("date").value = "";
+            document.getElementById("startTime").value = "";
+            document.getElementById("endTime").value = "";
+
+
+            displaySessions();
+        }
+
+
+        function displaySessions() {
+
+            const list =
+                document.getElementById("scheduleList");
+
+
+            if (sessions.length === 0) {
+
+                list.innerHTML = `
+                    <p class="empty-message">
+                        No study sessions added yet.
+                    </p>
+                `;
+
+                return;
+            }
+
+
+            sessions.sort((a, b) => {
+
+                return (a.date + a.startTime)
+                    .localeCompare(b.date + b.startTime);
+
+            });
+
+
+            list.innerHTML = "";
+
+
+            sessions.forEach(session => {
+
+                const sessionDiv =
+                    document.createElement("div");
+
+                sessionDiv.className = "session";
+
+
+                sessionDiv.innerHTML = `
+
+                    <div class="session-info">
+
+                        <div class="session-icon">
+                            📚
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                ${session.subject}
+                            </h3>
+
+                            <p>
+                                📅 ${formatDate(session.date)}
+                                &nbsp; | &nbsp;
+                                ⏰ ${formatTime(session.startTime)}
+                                -
+                                ${formatTime(session.endTime)}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="delete-button"
+                        onclick="deleteSession(${session.id})"
+                    >
+                        Delete
+                    </button>
+
+                `;
+
+
+                list.appendChild(sessionDiv);
+
+            });
+        }
+
+
+        function deleteSession(id) {
+
+            sessions =
+                sessions.filter(
+                    session => session.id !== id
+                );
+
+
+            localStorage.setItem(
+                "studySessions",
+                JSON.stringify(sessions)
+            );
+
+
+            displaySessions();
+        }
+
+
+        function formatDate(date) {
+
+            const parts = date.split("-");
+
+            return (
+                parts[2] +
+                "/" +
+                parts[1] +
+                "/" +
+                parts[0]
+            );
+        }
+
+
+        function formatTime(time) {
+
+            const [hours, minutes] =
+                time.split(":");
+
+            let hour = parseInt(hours);
+
+            const ampm =
+                hour >= 12 ? "PM" : "AM";
+
+            hour = hour % 12;
+
+            if (hour === 0) {
+                hour = 12;
+            }
+
+            return hour + ":" + minutes + " " + ampm;
+        }
+
+
+        displaySessions();
+
+    </script>
 
 </body>
 
 </html>
-```
