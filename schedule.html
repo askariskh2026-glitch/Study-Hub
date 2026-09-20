@@ -1,0 +1,181 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Schedule - Study Hub</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* LEFT SIDEBAR */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 85px;
+            height: 100vh;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        /* LOGIN ICON */
+        .login {
+            margin-bottom: 35px;
+        }
+
+        .login a {
+            text-decoration: none;
+            color: #4f46e5;
+            font-size: 25px;
+            background:white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .login a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* NAVIGATION */
+        .nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 25px;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* SETTINGS AT BOTTOM */
+        .settings {
+            margin-top: auto;
+        }
+
+        .settings a {
+            text-decoration: none;
+            color: white;
+            font-size: 28px;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .settings a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* MAIN AREA */
+        .main {
+            margin-left: 85px;
+            padding: 30px;
+        }
+
+        /* TOP BLUE HEADING BOX */
+        .header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 35px;
+            border-radius: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDE BAR NAVIGATION -->
+    <div class="sidebar">
+
+        <!-- Login -->
+        <div class="login">
+            <a href="login.html" title="Login">👤</a>
+        </div>
+
+        <!-- Navigation Icons -->
+        <div class="nav">
+
+            <a href="index.html" title="Home">🏠</a>
+
+            <a href="tasks.html" title="Tasks">📝</a>
+
+            <a href="studytime.html" title="Timer">⏱️</a>
+
+            <a href="schedule.html" title="Schedule">📅</a>
+
+            <a href="progress.html" title="Progress">📊</a>
+
+        </div>
+
+        <!-- Settings -->
+        <div class="settings">
+            <a href="settings.html" title="Settings">⚙️</a>
+        </div>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <!-- TOP BLUE HEADING BOX -->
+        <div class="header">
+            <h1>Schedule</h1>
+            <p>Plan your study time and stay organized</p>
+        </div>
+
+        <!-- Your Schedule content will go here -->
+
+    </div>
+
+</body>
+
+</html>
+```
